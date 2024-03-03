@@ -9,6 +9,6 @@
 #include <iomanip>
 #include "izhcell.h"
 
-void top_f(hls::stream<din_16> &input_stream, hls::stream<ap_uint<4>> &output_stream);
+void top_f(hls::stream<din_10> &input_stream, hls::stream<ap_uint<4>> &output_stream);
 
 #endif

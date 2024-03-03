@@ -1,7 +1,7 @@
 #include "main-tb.h"
 
 
-void arrayToStream(din_16 arr[M], hls::stream<din_16>& input_stream) {
+void arrayToStream(din_10 arr[M], hls::stream<din_10>& input_stream) {
 
     for (int i = 0; i < M; ++i) {
     	input_stream.write(arr[i]);
@@ -81,7 +81,7 @@ int main() {
 //										              2.1270,   5.3085,  29.6603};
 
 
-	din_24 data[80] ={
+	din_10 data[80] ={
 					 -12.3003,  -9.4459,  13.8447, -24.9656,  23.0509,   9.2109, -23.9942,
 			           1.7930,  12.1285, -14.6494,
 			          9.9675, -20.4346, -10.7302,   9.3592,  -3.3773,   7.5162, -12.6506,
@@ -98,14 +98,11 @@ int main() {
 			          -0.3744,  -6.6159,  -2.1894,
 			         10.1642,  16.7856, -17.8254, -28.8087, -20.4570,   1.6148, -20.7001,
 			           7.0804,  -6.9938,  19.5314
-	};
+		};
 
 
-//		IzhikevichCell l;
-//	    ap_fixed<64, 32> output_arr[160];
-//	    l.calc(data, output_arr);
 
-			hls::stream<din_16> input_stream;
+			hls::stream<din_10> input_stream;
 			hls::stream<ap_uint<4>> output_stream;
 
 			arrayToStream(data, input_stream);
@@ -142,14 +139,6 @@ int main() {
 					}
 				}
 
-
-
-//		for (int i = 0; i < 160; ++i) {
-//						std::cout << output_arr[i] << " ";
-//						if((i + 1) % 10 == 0 && (i+1) >= 10){
-//							std::cout <<  std::endl;
-//						}
-//				}
 		std::cout <<  std::endl;
 
 

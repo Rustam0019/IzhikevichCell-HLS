@@ -7,29 +7,29 @@
 class izh_param{
     public:
         izh_param();
-        izh_param(din_16 a,
-                din_16 b,
-                din_16 c,
-                din_16 d,
-                din_16 sq,
-                din_16 mn,
-                din_16 bias,
-                din_16 v_th,
-                din_16 tau_inv ,
-                din_16 alpha
+        izh_param(din_10 a,
+                din_10 b,
+                din_10 c,
+                din_10 d,
+                din_10 sq,
+                din_10 mn,
+                din_10 bias,
+                din_10 v_th,
+                din_10 tau_inv ,
+                din_10 alpha
         );
 
 
-        din_16 a;
-        din_16 b;
-        din_16 c;
-        din_16 d;
-        din_16 sq;
-        din_16 mn;
-        din_16 bias;
-        din_16 v_th;
-        din_16 tau_inv;
-        din_16 alpha;
+        din_10 a;
+        din_10 b;
+        din_10 c;
+        din_10 d;
+        din_10 sq;
+        din_10 mn;
+        din_10 bias;
+        din_10 v_th;
+        din_10 tau_inv;
+        din_10 alpha;
 
 };
 

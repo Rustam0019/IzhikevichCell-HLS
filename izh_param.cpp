@@ -2,16 +2,16 @@
 
 izh_param::izh_param(){}
 
-izh_param::izh_param(din_16 a,
-					 din_16 b,
-					 din_16 c,
-					 din_16 d,
-					 din_16 sq = 0.04,
-					 din_16 mn = 5.0,
-					 din_16 bias = 140.0,
-					 din_16 v_th = 30.0,
-					 din_16 tau_inv = 250.0,
-					 din_16 alpha = 100.0)
+izh_param::izh_param(din_10 a,
+					 din_10 b,
+					 din_10 c,
+					 din_10 d,
+					 din_10 sq = 0.04,
+					 din_10 mn = 5.0,
+					 din_10 bias = 140.0,
+					 din_10 v_th = 30.0,
+					 din_10 tau_inv = 250.0,
+					 din_10 alpha = 100.0)
 {
      this->a = a;
      this->b = b;

@@ -3,13 +3,12 @@
 
 
 IzhikevichState::IzhikevichState(){}
-IzhikevichState::IzhikevichState(din_16 v[M], din_16 u[M]){
+IzhikevichState::IzhikevichState(din_10 v[M], din_10 u[M]){
 
 		for (int j = 0; j < M; ++j) {
 			this->u[j] = u[j];
 			this->v[j] = v[j];
 		}
-
 }
 
 
@@ -34,11 +33,11 @@ IzhikevichState::IzhikevichState(din_16 v[M], din_16 u[M]){
 //            return v_and_u_g;
 //        }
 
-//template<size_t N, size_t M>
-void IzhikevichState::izh_feed_forward_step(hls::stream<din_16> &input_stream, hls::stream<ap_uint<4>> &output_stream,
+
+void IzhikevichState::izh_feed_forward_step(hls::stream<din_10> &input_stream, hls::stream<ap_uint<4>> &output_stream,
                                                                               //IzhikevichState st,
                                                                               izh_param p,
-																			  din_16 dt = 0.001)
+																			  din_10 dt = 0.001)
 {
 
 	din_8 v_new[M] = {-70};
@@ -46,15 +45,24 @@ void IzhikevichState::izh_feed_forward_step(hls::stream<din_16> &input_stream, h
 	din_8 tmp_var;
     ap_uint<4> str_element = 0.0;
 
-    din_16 dst[M] = {0.0};
+    din_10 dst[M] = {0.0};
 
     ap_uint<8> i = 0;
-	while(!input_stream.empty()){
-		input_stream.read(dst[i]);
-		v_new[i]  = -70.0;
-		u_new[i]  = -14.0;
-		i++;
-	}
+
+//	while(!input_stream.empty()){
+//		input_stream.read(dst[i]);
+//		v_new[i]  = -70.0;
+//		u_new[i]  = -14.0;
+//		i++;
+//	}
+
+    for(i = 0; i < 80; i++){
+    	if(!input_stream.empty()){
+    		input_stream.read(dst[i]);
+    	}
+    	v_new[i]  = -70.0;
+    	u_new[i]  = -14.0;
+    }
 
     for (int n = 0; n < 10; n++)
     {
