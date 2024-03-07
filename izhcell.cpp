@@ -5,7 +5,7 @@
 IzhikevichCell::IzhikevichCell(){}
 
 
-void IzhikevichCell::calc(hls::stream<din_10> &input_stream, hls::stream<ap_uint<4>> &output_stream){
+void IzhikevichCell::calc(hls::stream<din_8> &input_stream, hls::stream<ap_uint<4>> &output_stream){
 
 		 izh_param tonic_spiking_p(0.02, 0.2, -65.0, 6.0, 0.04, 5.0, 140.0, 30.0, 250.0, 100.0);
          IzhikevichState st;

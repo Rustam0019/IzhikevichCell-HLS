@@ -34,10 +34,10 @@ IzhikevichState::IzhikevichState(din_10 v[M], din_10 u[M]){
 //        }
 
 
-void IzhikevichState::izh_feed_forward_step(hls::stream<din_10> &input_stream, hls::stream<ap_uint<4>> &output_stream,
+void IzhikevichState::izh_feed_forward_step(hls::stream<din_8> &input_stream, hls::stream<ap_uint<4>> &output_stream,
                                                                               //IzhikevichState st,
                                                                               izh_param p,
-																			  din_10 dt = 0.001)
+																			  ap_fixed<26, 10> dt = 0.001)
 {
 
 	din_8 v_new[M] = {-70};
@@ -45,7 +45,7 @@ void IzhikevichState::izh_feed_forward_step(hls::stream<din_10> &input_stream, h
 	din_8 tmp_var;
     ap_uint<4> str_element = 0.0;
 
-    din_10 dst[M] = {0.0};
+    din_8 dst[M] = {0.0};
 
     ap_uint<8> i = 0;
 
@@ -56,7 +56,7 @@ void IzhikevichState::izh_feed_forward_step(hls::stream<din_10> &input_stream, h
 //		i++;
 //	}
 
-    for(i = 0; i < 80; i++){
+    for(i = 0; i < M; i++){
     	if(!input_stream.empty()){
     		input_stream.read(dst[i]);
     	}
@@ -67,6 +67,9 @@ void IzhikevichState::izh_feed_forward_step(hls::stream<din_10> &input_stream, h
     for (int n = 0; n < 10; n++)
     {
 		for (int j = 0; j < M; j++){
+//		#pragma HLS PIPELINE
+		//#pragma HLS DATAFLOW
+
 
 			tmp_var = v_new[j];
 			v_new[j] = tmp_var + p.tau_inv * dt * (
