@@ -76,7 +76,7 @@ int main() {
 //										              2.1270,   5.3085,  29.6603};
 
 
-	din_8 data[80] ={
+	din_8 data[M] ={
 					 -12.3003,  -9.4459,  13.8447, -24.9656,  23.0509,   9.2109, -23.9942,
 			           1.7930,  12.1285, -14.6494,
 			          9.9675, -20.4346, -10.7302,   9.3592,  -3.3773,   7.5162, -12.6506,
@@ -97,7 +97,7 @@ int main() {
 
 
 
-		ap_uint<4> out_val[M];
+		din_1 out_val[M];
 
 		top_f(data, out_val);
 
@@ -116,7 +116,7 @@ int main() {
 
 			for (int k = 0; k < M; ++k) {
 
-					ap_uint<4> refValue;
+					din_1 refValue;
 					refFile >> refValue;
 					//if(output_stream.read_nb(out_val[k])){
 						std::cout << out_val[k] << " ";

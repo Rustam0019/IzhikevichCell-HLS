@@ -12,8 +12,8 @@
 
 void arrayToStream(din_8 arr[M], hls::stream<din_8>& input_stream);
 
-void streamToArray(hls::stream<ap_uint<4>> &output_stream, ap_uint<4> *arr);
+void streamToArray(hls::stream<din_1> &output_stream, din_1 *arr);
 
-void top_f(din_8 *data_in, ap_uint<4> *data_out);
+void top_f(din_8 *data_in, din_1 *data_out);
 
 #endif
